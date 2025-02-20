@@ -21,7 +21,13 @@ class DatabaseSeeder extends Seeder
             Roles::create(['name' => 'agent']);
         }
 
-        \App\Models\User::factory(10)->create();
+        $this->call([
+            RolesSeeder::class,
+            UserSeeder::class,
+            TicketSeeder::class,
+        ]);
+
+        
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

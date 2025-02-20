@@ -1,18 +1,18 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Roles;  
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Ticket;
 
-class RolesSeeder extends Seeder
+class TicketSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Roles::factory(3)->create();
+        ticket::factory(15)->create();
     }
 }

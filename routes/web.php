@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::middleware('web')->group(function () {
 
 // Routes pour l'admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/users', function () {
         // Gestion des utilisateurs
     })->name('admin.users');
