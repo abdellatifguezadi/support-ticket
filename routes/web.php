@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,10 @@ Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/client/profile', function () {
         // Profil client
     })->name('client.profile');
+    Route::get('/client/tickets', [ClientController::class, 'index'])->name('client.tickets');
+    Route::post('/client/tickets', [ClientController::class, 'createTicket'])->name('client.tickets.store');
+    Route::put('/client/tickets/{id}', [ClientController::class, 'updateTicket'])->name('client.tickets.update');
+    Route::delete('/client/tickets/{id}', [ClientController::class, 'destroyTicket'])->name('client.tickets.destroy');
 });
 
 // Routes pour les agents
