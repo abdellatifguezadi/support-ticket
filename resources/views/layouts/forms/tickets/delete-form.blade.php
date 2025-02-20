@@ -14,7 +14,6 @@
             </x-secondary-button>
             <form method="POST" action="{{ route('client.tickets.destroy', $ticket->id) }}" class="ml-2">
                 @csrf
-                @method('DELETE')
                 <x-danger-button type="submit">
                     {{ __('Supprimer') }}
                 </x-danger-button>

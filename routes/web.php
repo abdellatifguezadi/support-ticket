@@ -41,25 +41,23 @@ Route::middleware('web')->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/users', function () {
-        // Gestion des utilisateurs
     })->name('admin.users');
 });
 
 // Routes pour les clients
 Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/client/profile', function () {
-        // Profil client
     })->name('client.profile');
     Route::get('/client/tickets', [ClientController::class, 'index'])->name('client.tickets');
     Route::post('/client/tickets', [ClientController::class, 'createTicket'])->name('client.tickets.store');
-    Route::put('/client/tickets/{id}', [ClientController::class, 'updateTicket'])->name('client.tickets.update');
-    Route::delete('/client/tickets/{id}', [ClientController::class, 'destroyTicket'])->name('client.tickets.destroy');
+    Route::post('/client/tickets/{id}/update', [ClientController::class, 'updateTicket'])->name('client.tickets.update');
+    Route::post('/client/tickets/{id}/delete', [ClientController::class, 'destroyTicket'])->name('client.tickets.destroy');
+    Route::post('/client/tickets/{id}/close', [ClientController::class, 'closeTicket'])->name('client.tickets.close');
 });
 
 // Routes pour les agents
 Route::middleware(['auth', 'role:agent'])->group(function () {
     Route::get('/agent/tickets', function () {
-        // Gestion des tickets
     })->name('agent.tickets');
 });
 

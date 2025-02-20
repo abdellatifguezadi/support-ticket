@@ -61,4 +61,16 @@ class ClientController extends Controller
         return redirect()->route('dashboard')
             ->with('success', 'Ticket supprimé avec succès.');
     }
+
+    public function closeTicket($id)
+    {
+        $ticket = Ticket::where('user_id', auth()->id())
+            ->where('status', 'open')
+            ->findOrFail($id);
+        
+        $ticket->update(['status' => 'closed']);
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Ticket fermé avec succès.');
+    }
 } 

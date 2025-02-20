@@ -3,7 +3,6 @@
 <x-modal name="update-ticket-{{ $ticket->id }}" focusable>
     <form method="POST" action="{{ route('client.tickets.update', $ticket->id) }}" class="p-6">
         @csrf
-        @method('PUT')
 
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Mettre à jour le ticket') }} - {{ $ticket->title }}

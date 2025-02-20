@@ -76,6 +76,12 @@
                     <x-primary-button class="ml-2" x-on:click.prevent="$dispatch('open-modal', 'update-ticket-{{ $ticket->id }}')">
                         {{ __('Mettre à jour') }}
                     </x-primary-button>
+                    <form method="POST" action="{{ route('client.tickets.close', $ticket->id) }}" class="ml-2">
+                        @csrf
+                        <x-primary-button class="bg-yellow-600 hover:bg-yellow-700 focus:bg-yellow-700">
+                            {{ __('Marquer comme fermé') }}
+                        </x-primary-button>
+                    </form>
                     <x-danger-button class="ml-2" x-on:click.prevent="$dispatch('open-modal', 'delete-ticket-{{ $ticket->id }}')">
                         {{ __('Supprimer') }}
                     </x-danger-button>
